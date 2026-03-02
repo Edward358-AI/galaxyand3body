@@ -1,0 +1,230 @@
+<div id="glowscript" class="glowscript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+<link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js"></script>
+<script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js"></script>
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+
+// START JAVASCRIPT
+;(function() {;
+var ρσ_modules = {};
+ρσ_modules.pythonize = {};
+
+(function(){
+    function strings() {
+        var string_funcs, exclude, name;
+        string_funcs = set("capitalize strip lstrip rstrip islower isupper isspace lower upper swapcase center count endswith startswith find rfind index rindex format join ljust rjust partition rpartition replace split rsplit splitlines zfill".split(" "));
+        if (!arguments.length) {
+            exclude = (function(){
+                var s = ρσ_set();
+                s.jsset.add("split");
+                s.jsset.add("replace");
+                return s;
+            })();
+        } else if (arguments[0]) {
+            exclude = Array.prototype.slice.call(arguments);
+        } else {
+            exclude = null;
+        }
+        if (exclude) {
+            string_funcs = string_funcs.difference(set(exclude));
+        }
+        var ρσ_Iter0 = string_funcs;
+        ρσ_Iter0 = ((typeof ρσ_Iter0[Symbol.iterator] === "function") ? (ρσ_Iter0 instanceof Map ? ρσ_Iter0.keys() : ρσ_Iter0) : Object.keys(ρσ_Iter0));
+        for (var ρσ_Index0 of ρσ_Iter0) {
+            name = ρσ_Index0;
+            (ρσ_expr_temp = String.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name] = (ρσ_expr_temp = ρσ_str.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name];
+        }
+    };
+    if (!strings.__module__) Object.defineProperties(strings, {
+        __module__ : {value: "pythonize"}
+    });
+
+    ρσ_modules.pythonize.strings = strings;
+})();
+async function __main__() {
+"use strict";
+    var display = canvas;
+    var scene = canvas();
+
+    function round(num, n=0) {return Number(num.toFixed(n))}
+
+    var version, print, arange, __name__, type, ρσ_ls, G, BLACK_HOLE_MASS, NUM_SPIRAL_STARS, NUM_BULGE_STARS, DT, scene, central_glow, black_hole, bodies, spiral_a, spiral_b, arm, theta, r, angle, y, v, omega, color_mix, star_color, pos, star, i, tint;
+    version = ρσ_list_decorate([ "3.2", "glowscript" ]);
+    Array.prototype['+'] = function(r) {return this.concat(r)}
+    Array.prototype['*'] = function(r) {return __array_times_number(this, r)}
+    window.__GSlang = "vpython";
+    print = GSprint;
+    arange = range;
+    __name__ = "__main__";
+    type = pytype;
+    var strings = ρσ_modules.pythonize.strings;
+
+    strings();
+    "4";
+    G = 1;
+    "5";
+    BLACK_HOLE_MASS = 15e4;
+    "6";
+    NUM_SPIRAL_STARS = 1e3;
+    "7";
+    NUM_BULGE_STARS = 500;
+    "8";
+    DT = .05;
+    "12";
+    async function uniform(a, b) {
+        "13";
+        return a["+"](random()["*"](b["-"](1["*"](a))));
+    };
+    if (!uniform.__argnames__) Object.defineProperties(uniform, {
+        __argnames__ : {value: ["a", "b"]},
+        __module__ : {value: null}
+    });
+
+    "15";
+    async function gauss(mu, sigma) {
+        var ρσ_ls, u1, u2, z0;
+        "17";
+        u1 = random();
+        "18";
+        if (u1["<"](1e-7)) {
+            u1 = 1e-7;
+        }
+        "19";
+        u2 = random();
+        "20";
+        z0 = sqrt(1["-u"]()["*"](2)["*"](log(u1)))["*"](cos(2["*"](pi)["*"](u2)));
+        "21";
+        return z0["*"](sigma)["+"](mu);
+    };
+    if (!gauss.__argnames__) Object.defineProperties(gauss, {
+        __argnames__ : {value: ["mu", "sigma"]},
+        __module__ : {value: null}
+    });
+
+    "24";
+    scene = ρσ_interpolate_kwargs.call(this, canvas, [ρσ_desugar_kwargs({title: "3D Galaxy Simulation", width: 1e3, height: 800, background: color.black})]);
+    "25";
+    scene.camera.pos = vector(0, 150, 200);
+    "26";
+    scene.camera.axis = vector(0, 1["-u"]()["*"](150), 1["-u"]()["*"](200));
+    "28";
+    scene.ambient = color.gray(.2);
+    "29";
+    central_glow = ρσ_interpolate_kwargs.call(this, local_light, [ρσ_desugar_kwargs({pos: vector(0, 0, 0), color: color.orange})]);
+    "32";
+    black_hole = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({pos: vector(0, 0, 0), radius: 5, color: color.orange, emissive: true})]);
+    "34";
+    bodies = ρσ_list_decorate([]);
+    "37";
+    spiral_a = 15;
+    "38";
+    spiral_b = .3;
+    "40";
+    for (var ρσ_Index1 = 0; ρσ_Index1["<"](NUM_SPIRAL_STARS); ρσ_Index1++) {
+        i = ρσ_Index1;
+        "41";
+        arm = i["%"](2);
+        "42";
+        theta = (await uniform(1, 10));
+        "45";
+        r = spiral_a["*"](exp(spiral_b["*"](theta)));
+        "46";
+        r=r["+"]((await gauss(0, 10)));
+        "47";
+        if (r["<"](10)) {
+            r = 10;
+        }
+        "49";
+        angle = theta["+"](arm["*"](pi));
+        "52";
+        y = (await gauss(0, 3));
+        "55";
+        v = sqrt(G["*"](BLACK_HOLE_MASS)["/"](r));
+        "56";
+        omega = v["/"](r);
+        "58";
+        color_mix = min(1, r["/"](200));
+        "59";
+        star_color = vector(1["-"](1["*"](color_mix)["*"](.5)), 1, 1);
+        "61";
+        pos = vector(r["*"](cos(angle)), y, r["*"](sin(angle)));
+        "64";
+        star = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({pos: pos, radius: 1, color: star_color, emissive: true})]);
+        "65";
+        star.r = r;
+        "66";
+        star.angle = angle;
+        "67";
+        star.pos.y = y;
+        "68";
+        star.omega = omega;
+        "70";
+        bodies.append(star);
+    }
+    "73";
+    for (var ρσ_Index2 = 0; ρσ_Index2["<"](NUM_BULGE_STARS); ρσ_Index2++) {
+        i = ρσ_Index2;
+        "74";
+        r = abs((await gauss(0, 15)));
+        "75";
+        if (r["<"](5)) {
+            r = 5;
+        }
+        "77";
+        angle = (await uniform(0, 2["*"](pi)));
+        "78";
+        y = (await gauss(0, 5))["*"](exp(1["-u"]()["*"](r)["/"](20)));
+        "80";
+        v = sqrt(G["*"](BLACK_HOLE_MASS)["/"](r))["*"](.7);
+        "81";
+        omega = v["/"](r);
+        "83";
+        tint = (await uniform(.5, .9));
+        "84";
+        star_color = vector(1, tint, .4);
+        "86";
+        pos = vector(r["*"](cos(angle)), y, r["*"](sin(angle)));
+        "88";
+        star = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({pos: pos, radius: 1.2, color: star_color, emissive: true})]);
+        "89";
+        star.r = r;
+        "90";
+        star.angle = angle;
+        "91";
+        star.pos.y = y;
+        "92";
+        star.omega = omega;
+        "94";
+        bodies.append(star);
+    }
+    "97";
+    print("Galaxy generated with {} stars.".format(NUM_SPIRAL_STARS["+"](NUM_BULGE_STARS)));
+    "101";
+    while (true) {
+        "102";
+        (await rate(60));
+        "105";
+        var ρσ_Iter3 = bodies;
+        ρσ_Iter3 = ((typeof ρσ_Iter3[Symbol.iterator] === "function") ? (ρσ_Iter3 instanceof Map ? ρσ_Iter3.keys() : ρσ_Iter3) : Object.keys(ρσ_Iter3));
+        for (var ρσ_Index3 of ρσ_Iter3) {
+            star = ρσ_Index3;
+            "106";
+            star.angle=star.angle["+"](star.omega["*"](DT));
+            "108";
+            star.pos = vector(star.r["*"](cos(star.angle)), star.pos.y, star.r["*"](sin(star.angle)));
+        }
+    }
+};
+if (!__main__.__module__) Object.defineProperties(__main__, {
+    __module__ : {value: null}
+});
+
+;$(function(){ window.__context = { glowscript_container: $("#glowscript").removeAttr("id") }; __main__() })})()
+// END JAVASCRIPT
+
+//--><!]]></script>
+</div>

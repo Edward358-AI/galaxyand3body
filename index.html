@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>Physics Simulations &amp; Creative Coding — Portfolio</title>
+  <meta name="description"
+    content="Interactive portfolio showcasing 3D physics simulations built with Python and VPython — including a chaotic 3-body orbit and a galactic N-body simulation." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+  <!-- ====================================================
+       HERO
+       ==================================================== -->
+  <section class="hero" id="hero">
+    <canvas id="starfield" aria-hidden="true"></canvas>
+
+    <div class="hero__content">
+      <span class="hero__badge">✦ Creative Coder &amp; Physics Enthusiast</span>
+
+      <h1 class="hero__title">Physics Simulations<br />&amp; Creative Coding</h1>
+
+      <p class="hero__subtitle">
+        Turning the mathematics of the cosmos into living, interactive
+        visualisations — from chaotic orbital mechanics to spiral galaxies.
+      </p>
+
+      <a href="#projects" class="hero__cta" id="cta-btn">
+        View Projects
+        <!-- Down-arrow icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 5v14M19 12l-7 7-7-7" />
+        </svg>
+      </a>
+    </div>
+
+    <div class="hero__scroll-hint" aria-hidden="true">
+      scroll
+      <span></span>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       PROJECTS
+       ==================================================== -->
+  <section class="projects" id="projects">
+    <header class="section-header">
+      <span class="section-header__label">Featured Work</span>
+      <h2 class="section-header__title">Simulation Projects</h2>
+    </header>
+
+    <!-- Project 1 — Neon 3-Body Orbit -->
+    <article class="project-card" id="project-3body">
+      <div class="project-card__info">
+        <span class="project-card__number">Project 01</span>
+        <h3 class="project-card__title">Neon 3-Body Orbit</h3>
+        <p class="project-card__desc">
+          A chaotic dance of three massive bodies governed by Newtonian gravity.
+          Momentum is balanced at initialisation so the system stays centred,
+          while elastic collisions with a moveable ring boundary keep the
+          simulation bounded. Watch as deterministic physics produces endlessly
+          unpredictable trajectories.
+        </p>
+        <div class="project-card__tags">
+          <span class="tag">Python</span>
+          <span class="tag">VPython</span>
+          <span class="tag">N-Body Gravity</span>
+          <span class="tag">Physics Engine</span>
+        </div>
+      </div>
+
+      <div class="project-card__embed-wrapper">
+        <div class="project-card__embed project-card__embed--magenta-cyan">
+          <iframe src="threebody.html"></iframe>
+        </div>
+        <a href="threebody.html" target="_blank" class="embed-source-link">
+          View Source
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 17l9.2-9.2M7 7h10v10" />
+          </svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- Project 2 — 3D Galaxy Simulation -->
+    <article class="project-card project-card--reversed" id="project-galaxy">
+      <div class="project-card__info">
+        <span class="project-card__number">Project 02</span>
+        <h3 class="project-card__title">3D Galaxy Simulation</h3>
+        <p class="project-card__desc">
+          A full three-dimensional galaxy model built around a supermassive
+          black hole. It features thick disc geometry, spiral arm structure, a
+          distinct galactic bulge, and analytically-driven orbital velocities.
+          Thousands of star particles render in real time to bring a miniature
+          galaxy to life.
+        </p>
+        <div class="project-card__tags">
+          <span class="tag">Python</span>
+          <span class="tag">VPython</span>
+          <span class="tag">Orbital Mechanics</span>
+          <span class="tag">3D Rendering</span>
+        </div>
+      </div>
+
+      <div class="project-card__embed-wrapper">
+        <div class="project-card__embed project-card__embed--orange">
+          <iframe src="galaxy.html"></iframe>
+        </div>
+        <a href="galaxy.html" target="_blank" class="embed-source-link">
+          View Source
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 17l9.2-9.2M7 7h10v10" />
+          </svg>
+        </a>
+      </div>
+    </article>
+  </section>
+
+  <!-- ====================================================
+       FOOTER
+       ==================================================== -->
+  <footer class="footer" id="footer">
+    <ul class="footer__links">
+      <li>
+        <a href="https://github.com/" class="footer__link" target="_blank" rel="noopener noreferrer">
+          <!-- GitHub icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 .3a12 12 0 00-3.8 23.38c.6.11.82-.26.82-.58v-2.16c-3.34.73-4.04-1.61-4.04-1.61a3.18 3.18 0 00-1.33-1.76c-1.09-.74.08-.73.08-.73a2.52 2.52 0 011.84 1.24 2.56 2.56 0 003.5 1 2.56 2.56 0 01.76-1.61c-2.67-.3-5.47-1.33-5.47-5.93a4.64 4.64 0 011.24-3.22 4.3 4.3 0 01.12-3.18s1-.33 3.3 1.23a11.4 11.4 0 016 0c2.28-1.56 3.29-1.23 3.29-1.23a4.3 4.3 0 01.12 3.18 4.64 4.64 0 011.23 3.22c0 4.61-2.81 5.63-5.48 5.93a2.86 2.86 0 01.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0012 .3z" />
+          </svg>
+          GitHub
+        </a>
+      </li>
+      <li>
+        <a href="https://linkedin.com/" class="footer__link" target="_blank" rel="noopener noreferrer">
+          <!-- LinkedIn icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 013.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77A1.75 1.75 0 000 1.73v20.54A1.75 1.75 0 001.77 24h20.45A1.76 1.76 0 0024 22.27V1.73A1.76 1.76 0 0022.22 0z" />
+          </svg>
+          LinkedIn
+        </a>
+      </li>
+      <li>
+        <a href="mailto:you@example.com" class="footer__link">
+          <!-- Mail icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7" />
+          </svg>
+          Email
+        </a>
+      </li>
+    </ul>
+
+    <p class="footer__copy">&copy; 2026 — Built with curiosity and code.</p>
+  </footer>
+
+  <!-- Scripts (after DOM) -->
+  <script src="script.js"></script>
+</body>
+
+</html>
